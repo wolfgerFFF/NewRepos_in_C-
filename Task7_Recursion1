@@ -1,0 +1,14 @@
+string OutNums(int M,int N)
+{
+  if(N==M)
+    return $"{M}";
+  return OutNums(M,N-1)"$",{N}";
+}
+
+Console.Write("Enter the 1st number: ");
+int M=Convert.ToInt32(Console.ReadLine());
+
+Console.Write("Enter the 2nd number: ");
+int N=Convert.ToInt32(Console.ReadLine());
+
+Console.WriteLine(OutNums(M,N));
