@@ -1,0 +1,50 @@
+#include <iostream>
+#include <vector>
+#include <string>
+
+class Product {
+public:
+    Product(std::string name, int price) : name(name), price(price) {}
+    std::string getName() { return name; }
+    int getPrice() { return price; }
+    std::string toString() { return "Name: " + name + ", Price: " + std::to_string(price); }
+
+private:
+    std::string name;
+    int price;
+};
+
+class VendingMachine {
+public:
+    void initProducts(std::vector<Product> products) {
+        this->products = products;
+    }
+
+    Product getProduct(std::string name) {
+        for (Product product : products) {
+            if (product.getName() == name) {
+              return product;
+            }
+        }
+        
+      return Product("", 0);
+    }
+
+private:
+  std::vector<Product> products;
+};
+
+int main() {
+    VendingMachine vendingMachine;
+    std::vector<Product> products = {
+      Product("pepsi", 42),
+      Product("chocolate", 67),
+      Product("cola", 70)
+    };
+    vendingMachine.initProducts(products);
+    std::cout << vendingMachine.getProduct("chocolate").toString() << std::endl;
+
+    system("pause");
+    return 0;
+}
+
